@@ -9,7 +9,7 @@
 
 	<name>mxGraph</name>
 	<artifactId>webjar-mxgraph</artifactId>
-	<version>3.9.8-SNAPSHOT</version>
+	<version>3.9.8</version>
 	<description>mxGraph JavaScript graphing library.</description>
 	
 	<properties>
@@ -42,7 +42,7 @@
 								<get src="${src.url}" dest="${src.zipdir}/src.zip" />
 								<unzip src="${src.zipdir}/src.zip" dest="${src.tmpdir}" />
 								<move todir="${webjar.target}">
-									<fileset dir="${src.rootdir}" includes="LICENSE,README.md"/>
+									<fileset dir="${src.rootdir}" includes="LICENSE,README.md" />
 								</move>
 								<move todir="${webjar.target}/dist">
 									<fileset dir="${src.rootdir}/javascript/src" includes="css/**,images/**,resources/**" />
@@ -62,4 +62,8 @@
 			</plugin>
 		</plugins>
 	</build>
+
+  <scm>
+    <tag>3.9.8</tag>
+  </scm>
 </project>
