@@ -9,7 +9,7 @@
 
 	<name>mxGraph</name>
 	<artifactId>webjar-mxgraph</artifactId>
-	<version>4.0.0-SNAPSHOT</version>
+	<version>4.1.1-SNAPSHOT</version>
 	<description>mxGraph JavaScript graphing library.</description>
 	
 	<properties>
