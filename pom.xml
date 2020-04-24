@@ -17,18 +17,6 @@
 		<src.url>https://github.com/jgraph/mxgraph/archive/v${src.version}.zip</src.url>
 		<src.top>mxgraph-${src.version}</src.top>
 		<mxgraph.init>window.mxBasePath = './webjars/webjar-mxgraph/${project.version}/dist';</mxgraph.init>
-		<systemjs>
-			{
-				"paths": {
-					"mxgraph": "dist/mxClient"
-				},
-				"meta": {
-					"mxgraph": {
-						"format": "global"
-					}
-				}
-			}			
-		</systemjs>
 	</properties>
 	
 	<build>
