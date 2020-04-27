@@ -30,12 +30,12 @@
 							<target>
 								<get src="${src.url}" dest="${src.zipdir}/src.zip" />
 								<unzip src="${src.zipdir}/src.zip" dest="${src.tmpdir}" />
-								<move todir="${webjar.target}">
+								<copy todir="${webjar.target}">
 									<fileset dir="${src.rootdir}" includes="LICENSE,README.md" />
-								</move>
-								<move todir="${webjar.target}/dist">
-									<fileset dir="${src.rootdir}/javascript/src" includes="css/**,images/**,resources/**" />
-								</move>
+								</copy>
+								<copy todir="${webjar.target}/dist">
+									<fileset dir="${src.rootdir}/javascript/src" includes="css/,images/,resources/" />
+								</copy>
 								<concat destfile="${webjar.target}/dist/mxClient.js">
 									<header>${mxgraph.init}</header>
 									<fileset dir="${src.rootdir}/javascript" includes="mxClient.js" />
