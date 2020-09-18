@@ -1,10 +1,5 @@
 {
-  "paths": {
+  "imports": {
     "mxgraph": "dist/mxClient.js"
-  },
-  "meta": {
-    "mxgraph": {
-      "format": "global"
-    }
   }
 }
