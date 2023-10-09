@@ -4,12 +4,12 @@
 	<parent>
 		<groupId>org.fujion.webjars</groupId>
 		<artifactId>fujion-webjars</artifactId>
-		<version>3.0.0</version>
+		<version>3.2.0-SNAPSHOT</version>
 	</parent>
 
 	<name>mxGraph</name>
 	<artifactId>webjar-mxgraph</artifactId>
-	<version>4.2.2-10</version>
+	<version>4.2.2-11</version>
 	<description>mxGraph JavaScript graphing library.</description>
 	
 	<properties>
@@ -17,6 +17,7 @@
 		<src.url>https://github.com/jgraph/mxgraph/archive/v${src.version}.zip</src.url>
 		<src.top>mxgraph-${src.version}</src.top>
 		<mxgraph.init>window.mxBasePath = './webjars/webjar-mxgraph/${project.version}/dist';</mxgraph.init>
+		<npm-install.skip>true</npm-install.skip>
 	</properties>
 	
 	<build>
