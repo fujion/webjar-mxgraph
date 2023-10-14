@@ -13,10 +13,8 @@
 	<description>mxGraph JavaScript graphing library.</description>
 	
 	<properties>
-		<skip.minification.css>false</skip.minification.css>
 		<src.url>https://github.com/jgraph/mxgraph/archive/v${src.version}.zip</src.url>
-		<src.top>mxgraph-${src.version}</src.top>
-		<mxgraph.init>window.mxBasePath = './webjars/webjar-mxgraph/${project.version}/dist';</mxgraph.init>
+		<npm-install.skip>false</npm-install.skip>
 	</properties>
 
 	<build>
@@ -48,22 +46,14 @@
 						<id>precompile</id>
 						<configuration>
 							<target>
-								<get src="${src.url}" dest="${src.zipdir}/src.zip" />
-								<unzip src="${src.zipdir}/src.zip" dest="${src.tmpdir}" />
-								<copy todir="${webjar.target}">
-									<fileset dir="${src.rootdir}" includes="LICENSE,README.md" />
+								<get src="${src.url}" dest="${src.zipdir}/src.zip"/>
+								<unzip src="${src.zipdir}/src.zip" dest="${src.rootdir}"/>
+								<copy todir="${src.rootdir}">
+									<fileset dir="${basedir}/staging" />
+									<filterchain>
+										<expandproperties />
+									</filterchain>
 								</copy>
-								<copy todir="${webjar.target}/dist">
-									<fileset dir="${src.rootdir}/javascript/src" includes="css/,images/,resources/" />
-								</copy>
-								<concat destfile="${webjar.target}/dist/mxClient.js">
-									<header>${mxgraph.init}</header>
-									<fileset dir="${src.rootdir}/javascript" includes="mxClient.js" />
-								</concat>
-								<concat destfile="${webjar.target}/dist/mxClient.min.js">
-									<header>${mxgraph.init}</header>
-									<fileset dir="${src.rootdir}/javascript" includes="mxClient.min.js" />
-								</concat>
 							</target>
 						</configuration>
 					</execution>
