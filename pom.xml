@@ -49,12 +49,6 @@
                                 <mkdir dir="${webjar.staging}"/>
                                 <get src="${src.url}" dest="${webjar.staging}/src.zip"/>
                                 <unzip src="${webjar.staging}/src.zip" dest="${webjar.staging}"/>
-                                <copy todir="${webjar.staging}">
-                                    <fileset dir="${basedir}/staging"/>
-                                    <filterchain>
-                                        <expandproperties/>
-                                    </filterchain>
-                                </copy>
                             </target>
                         </configuration>
                     </execution>
