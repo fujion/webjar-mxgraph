@@ -1,64 +1,65 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.fujion.webjars</groupId>
-		<artifactId>fujion-webjars</artifactId>
-		<version>3.2.0-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>org.fujion.webjars</groupId>
+        <artifactId>fujion-webjars</artifactId>
+        <version>3.2.0-SNAPSHOT</version>
+    </parent>
 
-	<name>mxGraph</name>
-	<artifactId>webjar-mxgraph</artifactId>
-	<version>4.2.2-11-SNAPSHOT</version>
-	<description>mxGraph JavaScript graphing library.</description>
-	
-	<properties>
-		<src.url>https://github.com/jgraph/mxgraph/archive/v${src.version}.zip</src.url>
-		<npm-install.skip>false</npm-install.skip>
-	</properties>
+    <name>mxGraph</name>
+    <artifactId>webjar-mxgraph</artifactId>
+    <version>4.2.2-11-SNAPSHOT</version>
+    <description>mxGraph JavaScript graphing library.</description>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.fujion.webjars</groupId>
-				<artifactId>webjar-validator-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>validate-webjar</id>
-						<configuration>
-							<rules>
-								<rule>file_exists import-map.json</rule>
-								<rule>file_exists README.md</rule>
-								<rule>file_contains LICENSE "Apache License"</rule>
-								<rule>file_exists dist/mxClient.js</rule>
-								<rule>dir_exists dist/css</rule>
-								<rule>dir_exists dist/images</rule>
-								<rule>dir_exists dist/resources</rule>
-							</rules>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>precompile</id>
-						<configuration>
-							<target>
-								<get src="${src.url}" dest="${src.zipdir}/src.zip"/>
-								<unzip src="${src.zipdir}/src.zip" dest="${src.rootdir}"/>
-								<copy todir="${src.rootdir}">
-									<fileset dir="${basedir}/staging" />
-									<filterchain>
-										<expandproperties />
-									</filterchain>
-								</copy>
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+    <properties>
+        <src.url>https://github.com/jgraph/mxgraph/archive/v${src.version}.zip</src.url>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.fujion.webjars</groupId>
+                <artifactId>webjar-validator-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>webjar-validate</id>
+                        <configuration>
+                            <rules>
+                                <rule>file_exists import-map.json</rule>
+                                <rule>file_exists README.md</rule>
+                                <rule>file_contains LICENSE "Apache License"</rule>
+                                <rule>file_exists dist/mxClient.js</rule>
+                                <rule>dir_exists dist/css</rule>
+                                <rule>dir_exists dist/images</rule>
+                                <rule>dir_exists dist/resources</rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>precompile</id>
+                        <configuration>
+                            <target>
+                                <mkdir dir="${webjar.staging}"/>
+                                <get src="${src.url}" dest="${webjar.staging}/src.zip"/>
+                                <unzip src="${webjar.staging}/src.zip" dest="${webjar.staging}"/>
+                                <copy todir="${webjar.staging}">
+                                    <fileset dir="${basedir}/staging"/>
+                                    <filterchain>
+                                        <expandproperties/>
+                                    </filterchain>
+                                </copy>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

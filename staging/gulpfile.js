@@ -3,9 +3,9 @@ const concat = require('gulp-concat');
 const minifyCSS = require('gulp-clean-css');
 const rename = require("gulp-rename");
 
-const srcDir = '${src.rootdir}/mxgraph-${version.unrevise}/';
+const srcDir = '${webjar.staging}/mxgraph-${version.unrevise}/';
 const destDir = '${webjar.target}/';
-const header = '${src.rootdir}/header.js';
+const header = '${webjar.staging}/header.js';
 
 function task1() {
     return _copy(['LICENSE', '*.md']);
