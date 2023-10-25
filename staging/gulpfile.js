@@ -2,10 +2,19 @@ const {src, dest, series} = require('gulp');
 const concat = require('gulp-concat');
 const minifyCSS = require('gulp-clean-css');
 const rename = require("gulp-rename");
+const download = require("gulp-download-stream");
+const unzip = require('gulp-unzip');
+const streamify = require('gulp-streamify');
 
-const srcDir = '${webjar.staging}/mxgraph-${version.unrevise}/';
+const srcDir = `${webjar.staging}/mxgraph-${version.unrevise}/`;
 const destDir = '${webjar.target}/';
 const header = '${webjar.staging}/header.js';
+
+function task0() {
+    return download(`https://github.com/jgraph/mxgraph/archive/v${version.unrevise}.zip`)
+        .pipe(streamify(unzip()))
+        .pipe(dest('./'));
+}
 
 function task1() {
     return _copy(['LICENSE', '*.md']);
@@ -60,4 +69,4 @@ function _minifyCSS(_src, _dest) {
         .pipe(_toDest(_dest))
 }
 
-exports.default = series(task1, task2, task3, task4, task5, task6);
+exports.default = series(task0, task1, task2, task3, task4, task5, task6);

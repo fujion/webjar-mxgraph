@@ -13,10 +13,6 @@
     <version>4.2.2-11-SNAPSHOT</version>
     <description>mxGraph JavaScript graphing library.</description>
 
-    <properties>
-        <src.url>https://github.com/jgraph/mxgraph/archive/v${src.version}.zip</src.url>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -35,21 +31,6 @@
                                 <rule>dir_exists dist/images</rule>
                                 <rule>dir_exists dist/resources</rule>
                             </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>precompile</id>
-                        <configuration>
-                            <target>
-                                <mkdir dir="${webjar.staging}"/>
-                                <get src="${src.url}" dest="${webjar.staging}/src.zip"/>
-                                <unzip src="${webjar.staging}/src.zip" dest="${webjar.staging}"/>
-                            </target>
                         </configuration>
                     </execution>
                 </executions>
